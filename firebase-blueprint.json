@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "Category": {
+      "title": "Category",
+      "description": "Tea category (e.g., Original Tea, Milk Tea)",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "order": { "type": "integer" }
+      },
+      "required": ["name"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A tea drink item",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "priceM": { "type": "number" },
+        "priceL": { "type": "number" },
+        "isRecommended": { "type": "boolean" },
+        "canBeHot": { "type": "boolean" },
+        "image": { "type": "string" }
+      },
+      "required": ["name", "categoryId"]
+    },
+    "Topping": {
+      "title": "Topping",
+      "description": "Additional ingredients for the drink",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "price": { "type": "number" }
+      }
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A customer order",
+      "type": "object",
+      "properties": {
+        "items": { "type": "array" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "preparing", "completed", "cancelled"] },
+        "customerName": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["items", "total", "status", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Collection of drink categories"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Collection of drink products"
+    },
+    "/toppings/{toppingId}": {
+      "schema": "Topping",
+      "description": "Collection of available toppings"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of customer orders"
+    }
+  }
+}
