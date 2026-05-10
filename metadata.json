@@ -1,0 +1,6 @@
+{
+  "name": "Oolong Tea Order System",
+  "description": "A comprehensive tea ordering system featuring a customer-facing frontend for easy ordering and an admin backend for management, powered by Firebase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
